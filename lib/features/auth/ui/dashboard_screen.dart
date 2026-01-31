@@ -9,6 +9,7 @@ import 'add_edit_resume_screen.dart';
 import 'personal_info_screen.dart';
 import 'experiences_screen.dart';
 import 'education_screen.dart';
+import 'resume_attachments_screen.dart';
 import 'skills_screen.dart';
 import 'summary_screen.dart';
 import 'resume_preview_screen.dart';
@@ -211,6 +212,13 @@ class ResumeCard extends StatelessWidget {
                       _actionButton(context, Icons.summarize_outlined, 'Summary', SummaryScreen(resumeId: resume.id!)),
                       /// ✅ الربط بشاشة المعاينة الاحترافية
                       _actionButton(context, Icons.visibility_outlined, 'Preview', ResumeFullPreviewScreen(resume: resume)),
+                      _actionButton(
+                        context,
+                        Icons.image_outlined,
+                        'Attachments',
+                        ResumeAttachmentsScreen(resumeId: resume.id!),
+                      ),
+
                     ],
                   ),
                   const SizedBox(height: 16),
