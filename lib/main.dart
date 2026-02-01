@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_resume/features/auth/ui/login_screen.dart';
+import 'package:smart_resume/features/auth/ui/splash_screen.dart'; // استيراد الـ Splash
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -24,9 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginScreen(),
+      home: const SplashScreen(), // ✅ جعل شاشة البداية هي الـ Splash
     );
   }
 }
-
-

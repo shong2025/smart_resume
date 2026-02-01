@@ -28,10 +28,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(AuthAuthenticated());
         }
       } else {
-        emit(AuthUnauthenticated(message: "Invalid email or password"));
+        emit(AuthUnauthenticated(message: "Check your email or password"));
       }
+    } on AuthException catch (e) {
+      // ✅ معالجة احترافية لأخطاء تسجيل الدخول
+      String errorMsg = "An error occurred during login";
+      if (e.message.contains("Invalid login credentials")) {
+        errorMsg = "The email or password you entered is incorrect.";
+      } else {
+        errorMsg = e.message;
+      }
+      emit(AuthUnauthenticated(message: errorMsg));
     } catch (e) {
-      emit(AuthUnauthenticated(message: e.toString()));
+      emit(AuthUnauthenticated(message: "Connection failed. Please check your internet."));
     }
   }
 
